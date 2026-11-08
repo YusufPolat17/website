@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yusuf × Çiğdem ♡</title>
+  <meta name="description" content="07.08.2026'da başlayan küçük bir hikâye. Yusuf × Çiğdem için özel olarak hazırlanmış dijital evren.">
+  <meta name="theme-color" content="#FFF9F5">
+
+  <!-- Favicon (Inline SVG: Elegant Lily & Y×Ç Monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23FFF9F5' stroke='%238D3046' stroke-width='4'/><path d='M50 25 C45 38 35 45 25 50 C35 55 45 62 50 75 C55 62 65 55 75 50 C65 45 55 38 50 25 Z' fill='%23F6C9D8' stroke='%238D3046' stroke-width='2'/><circle cx='50' cy='50' r='5' fill='%238D3046'/></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Starfield / Particle Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Custom Cursor for Desktop -->
+  <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Audio Element (The Weeknd - Shameless Full Track) -->
+  <audio id="love-audio" preload="auto">
+    <source src="assets/audio/shameless.mp3" type="audio/mpeg">
+    <source src="assets/audio/shameless.m4a" type="audio/mp4">
+    <source src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/36/54/f7/3654f7f3-b9f9-6d6a-803e-ab79ceaade36/mzaf_7895407354704101960.plus.aac.p.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- ==========================================================================
+       1. CINEMATIC INTRO OVERLAY
+       ========================================================================== -->
+  <div id="intro-overlay" role="dialog" aria-label="Açılış Hikâyesi">
+    <div class="intro-particles"></div>
+    <div class="intro-content">
+      <div class="intro-line intro-date" id="intro-step-1">07.08.2026</div>
+      <div class="intro-line intro-time" id="intro-step-2">18:25</div>
+      <div class="intro-line intro-quote" id="intro-step-3">"Çiğdem merhaba."</div>
+      <div class="intro-line intro-quote" id="intro-step-4">and somehow...</div>
+      <div class="intro-line intro-quote" id="intro-step-5">here we are.</div>
+      <div class="intro-line intro-names" id="intro-step-6">YUSUF × ÇİĞDEM</div>
+    </div>
+    <button class="intro-skip-btn" id="skip-intro-btn" type="button">geç →</button>
+  </div>
+
+  <!-- ==========================================================================
+       2. STICKY TOP NAVIGATION & MUSIC PLAYER
+       ========================================================================== -->
+  <header id="site-header">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Ana sayfa">
+        <svg class="nav-brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Yusuf × Çiğdem</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#hero" class="nav-link">Başlangıç</a></li>
+          <li><a href="#counters" class="nav-link">Zamanımız</a></li>
+          <li><a href="#first-message" class="nav-link">İlk Mesaj</a></li>
+          <li><a href="#timeline" class="nav-link">Zaman Çizelgesi</a></li>
+          <li><a href="#scrapbook" class="nav-link">Bizden Kareler</a></li>
+          <li><a href="#our-world" class="nav-link">Bizim Dünyamız</a></li>
+          <li><a href="#letters" class="nav-link">Mektuplar</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Shameless Song Controller -->
+        <button class="audio-player-btn" id="audio-toggle-btn" type="button" aria-label="Şarkımızı Çal">
+          <span class="audio-equalizer" aria-hidden="true">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+          </span>
+          <span id="audio-btn-text">♫ play our song</span>
+        </button>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" type="button" aria-label="Menüyü Aç">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <main>
+
+    <!-- ==========================================================================
+         3. HERO SECTION
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+
+      <!-- Personality Floating Decorative Motifs -->
+      <div class="hero-motifs-container">
+        <!-- Çiğdem Lily Badge -->
+        <div class="motif-badge cigdem-lily" id="hero-lily-badge" title="Çiğdem'in en sevdiği çiçek">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C10.5 6 7 8 3 10c4 2 7.5 4 9 8 1.5-4 5-6 9-8-4-2-7.5-4-9-8z"/>
+          </svg>
+          <span>zambak • Çiğdem's favorite</span>
+        </div>
+
+        <!-- Yusuf Spider-Man Sense Badge -->
+        <div class="motif-badge yusuf-spidey" id="hero-spidey-badge" title="Örümcek hisleri tıkla">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="2" x2="12" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <circle cx="12" cy="12" r="4"></circle>
+          </svg>
+          <span>spider-sense: active</span>
+        </div>
+
+        <!-- Çiğdem Capybara Badge -->
+        <div class="motif-badge cigdem-capybara" id="hero-capybara-badge" title="Güvenlik onaylı">
+          <span>🤎</span>
+          <span>capybara • relationship security</span>
+        </div>
+
+        <!-- Yusuf McQueen Speed Badge -->
+        <div class="motif-badge yusuf-mcqueen" id="hero-mcqueen-badge" title="Kachow!">
+          <span>⚡ 95</span>
+          <span>kachow • speed: no brakes</span>
+        </div>
+      </div>
+
+      <div class="container hero-main-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>OUR LITTLE UNIVERSE</span>
+        </div>
+
+        <h1 class="hero-title">
+          Yusuf <span class="cross-symbol">×</span> Çiğdem
+        </h1>
+
+        <p class="hero-subtitle">
+          "Birbirinden tamamen farklı iki küçük dünyanın çarpışma hikâyesi."
+        </p>
+
+        <div class="hero-date-badge">
+          07.08.2026 → ∞
+        </div>
+
+        <div>
+          <a href="#counters" class="hero-scroll-cue">
+            <span>hikâyeye başla</span>
+            <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. DUAL LIVE RELATIONSHIP COUNTERS
+         ========================================================================== -->
+    <section class="section" id="counters">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Zaman Çizelgesi & Sayaç</span>
+          <h2 class="section-title">Her Saniyenin Anlamı Var</h2>
+          <p class="section-subtitle">O ilk andan beri akıp giden zaman, her saniye bizimle büyüyor.</p>
+        </div>
+
+        <div class="counters-grid">
+          <!-- Counter 1: İlk Mesajımızdan Beri -->
+          <div class="counter-card" id="card-first-message">
+            <div class="counter-header">
+              <div class="counter-title-group">
+                <h3>İlk mesajımızdan beri</h3>
+                <span class="counter-date-label">07.08.2026 — 18:25</span>
+              </div>
+              <div class="counter-badge-icon" title="Konser davetiyle başlayan an">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="counter-units-row" id="counter-first-message">
+              <div class="unit-box">
+                <span class="unit-number" id="c1-days">0</span>
+                <span class="unit-label">GÜN</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c1-hours">0</span>
+                <span class="unit-label">SAAT</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c1-minutes">0</span>
+                <span class="unit-label">DAKİKA</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c1-seconds">0</span>
+                <span class="unit-label">SANİYE</span>
+              </div>
+            </div>
+
+            <div class="counter-footer-note">
+              "Bir mesaj attım, hayatım güzelleşti."
+            </div>
+          </div>
+
+          <!-- Counter 2: Biz Olalı (Featured Milestone) -->
+          <div class="counter-card featured-counter" id="card-relationship">
+            <div class="counter-header">
+              <div class="counter-title-group">
+                <h3>Biz olalı</h3>
+                <span class="counter-date-label">14.09.2026 — 18:20</span>
+              </div>
+              <div class="counter-badge-icon" title="Resmen Biz Olduğumuz Gün">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="counter-units-row" id="counter-relationship">
+              <div class="unit-box">
+                <span class="unit-number" id="c2-days">0</span>
+                <span class="unit-label">GÜN</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c2-hours">0</span>
+                <span class="unit-label">SAAT</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c2-minutes">0</span>
+                <span class="unit-label">DAKİKA</span>
+              </div>
+              <div class="unit-box">
+                <span class="unit-number" id="c2-seconds">0</span>
+                <span class="unit-label">SANİYE</span>
+              </div>
+            </div>
+
+            <div class="counter-footer-note">
+              "Yusuf + Çiğdem • Sonsuzluğa doğru..."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. THE EXACT FIRST CONVERSATION ("Her şey böyle başladı.")
+         ========================================================================== -->
+    <section class="section first-message-section" id="first-message">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Orijinal Sohbet</span>
+          <h2 class="section-title">Her şey böyle başladı.</h2>
+          <p class="section-subtitle">Hiçbir kelimesine, harfine ya da virgülüne dokunmadan. Tam olarak yazıldığı gibi.</p>
+        </div>
+
+        <div class="message-story-container">
+          <div class="message-card-header">
+            <div class="message-stamp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>07.08.2026 — 18:25</span>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">Yenikapı Konser Günü</span>
+          </div>
+
+          <div class="bubble-dialog-flow">
+            <!-- Yusuf's Exact Message -->
+            <div class="chat-bubble-wrapper yusuf-wrapper">
+              <div class="sender-tag yusuf-tag">
+                <span>Yusuf</span>
+              </div>
+              <div class="chat-bubble yusuf-bubble">çiğdem merhaba. dktt ve mor ve ötesinin konseri var yenikapı'da saat 8de başlıyor 1 biletimiz var arkadaşım rahatsızlandı gelemiyor aklıma sen geldin. müsaitsen gelmek ister misin? liseden arkadaşımlayım egemen yok.</div>
+            </div>
+
+            <!-- Çiğdem's Exact Reply -->
+            <div class="chat-bubble-wrapper cigdem-wrapper">
+              <div class="sender-tag cigdem-tag">
+                <span>Çiğdem</span>
+              </div>
+              <div class="chat-bubble cigdem-bubble">selamm çok isterdim gelmek ama balıkesirdeyim ben şu an o yüzden gelemicemm</div>
+            </div>
+          </div>
+
+          <!-- Emotional Punchline -->
+          <div class="conversation-punchline">
+            <p class="punchline-line-1">Konser olmadı.</p>
+            <p class="punchline-line-2">Ama hikâye başladı.</p>
+            <span class="egemen-easter-egg" title="Liseden arkadaşım, ama o gün yoktu :)">Psst: Egemen yok.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. RELATIONSHIP TIMELINE
+         ========================================================================== -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Anılar Zinciri</span>
+          <h2 class="section-title">Zaman Çizelgesi</h2>
+          <p class="section-subtitle">Adım adım, güle güle, yan yana geçen unutulmaz kilometre taşları.</p>
+        </div>
+
+        <div class="timeline-track">
+          <!-- EVENT 1: 07.08.2026 -->
+          <div class="timeline-item" data-chapter="1">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-chap-tag">Chapter 01</span>
+              <h3 class="timeline-event-title">İlk Mesaj</h3>
+              <div class="timeline-event-date">07.08.2026 — 18:25</div>
+              <p class="timeline-event-desc">
+                Bir konser davetiyle başladı. Konser gerçekleşmedi ama bir ömre bedel sohbetin kapısı aralandı.
+              </p>
+            </div>
+          </div>
+
+          <!-- EVENT 2: 11.09.2026 (PHOTO 1) -->
+          <div class="timeline-item" data-chapter="2">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-chap-tag">Chapter 02</span>
+              <h3 class="timeline-event-title">İlk Fotoğrafımız</h3>
+              <div class="timeline-event-date">11.09.2026</div>
+              <p class="timeline-event-desc">
+                İlk ortak karemiz. Çimlerin üstünde, güneşin altında, yüzümüzdeki o içten gülümsemeyle kaydedildi.
+              </p>
+              
+              <!-- Polaroid 1 -->
+              <div class="timeline-polaroid" onclick="openLightbox('assets/images/photo-1.jpg', '11.09.2026 — the first one 🤍')">
+                <div class="polaroid-img-frame">
+                  <img src="assets/images/photo-1.jpg" alt="Yusuf ve Çiğdem ilk fotoğraf 11 Eylül 2026" loading="lazy">
+                </div>
+                <div class="polaroid-caption">the first one 🤍</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EVENT 3: 14.09.2026 18:20 (PHOTO 2) — THE CROWN MILESTONE -->
+          <div class="timeline-item crown-event" id="event-biz-olduk" data-chapter="3">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-chap-tag" style="color: var(--burgundy);">★ The Most Important Day</span>
+              <h3 class="timeline-event-title">Biz Olduk.</h3>
+              <div class="timeline-event-date" style="color: var(--burgundy); font-weight: 700;">14.09.2026 — 18:20</div>
+              
+              <!-- Blooming Lily Visual -->
+              <div class="lily-bloom-container">
+                <svg class="lily-svg-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                  <path d="M50 85 C48 60 30 50 15 45 C30 40 45 35 50 10 C55 35 70 40 85 45 C70 50 52 60 50 85 Z" fill="#FDE8EF" stroke="#8D3046" stroke-width="3"/>
+                  <circle cx="50" cy="45" r="4" fill="#8D3046"/>
+                  <path d="M50 45 Q35 25 30 20 M50 45 Q65 25 70 20" stroke="#E58AA6" stroke-width="2"/>
+                </svg>
+                <span style="font-family: var(--font-hand); font-size: 1.25rem; color: var(--burgundy);">
+                  "Ve zambak açtı..."
+                </span>
+              </div>
+
+              <p class="timeline-event-desc">
+                Resmen 'biz' olduğumuz an. İki ayrı yolun birleşip tek bir sonsuz maceraya dönüştüğü o altın saatler.
+              </p>
+
+              <!-- Polaroid 2 (Prominent) -->
+              <div class="timeline-polaroid" style="border: 2px solid var(--pink-soft);" onclick="openLightbox('assets/images/photo-2.jpg', '14.09.2026 18:20 — Biz olduk. Day 1 🤍')">
+                <div class="polaroid-img-frame">
+                  <img src="assets/images/photo-2.jpg" alt="Yusuf ve Çiğdem gün batımı Biz olduk 14 Eylül 2026" loading="lazy">
+                </div>
+                <div class="polaroid-caption">14.09.2026 • Day 1 ♡</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EVENT 4: 21.09.2026 (PHOTO 3) -->
+          <div class="timeline-item" data-chapter="4">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <span class="timeline-chap-tag">Chapter 04</span>
+              <h3 class="timeline-event-title">Bir Anı Daha</h3>
+              <div class="timeline-event-date">21.09.2026</div>
+              <p class="timeline-event-desc">
+                Deniz kenarında, sıcacık bir bakış, masanın üstünde kenetlenmiş eller. Hikâyemizin en tatlı sayfalarından biri.
+              </p>
+
+              <!-- Polaroid 3 -->
+              <div class="timeline-polaroid" onclick="openLightbox('assets/images/photo-3.jpg', '21.09.2026 — Another page of our little story 🤍')">
+                <div class="polaroid-img-frame">
+                  <img src="assets/images/photo-3.jpg" alt="Yusuf ve Çiğdem kafe masasında el ele 21 Eylül 2026" loading="lazy">
+                </div>
+                <div class="polaroid-caption">Another page of our little story 🤍</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FUTURE RESERVED MEMORIES -->
+          <div class="timeline-item" data-chapter="∞">
+            <div class="timeline-marker" style="background: var(--pink-soft);" aria-hidden="true"></div>
+            <div class="timeline-card" style="border: 1px dashed var(--burgundy);">
+              <span class="timeline-chap-tag">To be continued...</span>
+              <h3 class="timeline-event-title">Gelecek Sayfalarımız</h3>
+              <p class="timeline-event-desc">
+                Birlikte dolduracağımız yüzlerce yeni hatıra için yerimiz hazır.
+              </p>
+
+              <div class="future-reserved-grid">
+                <div class="reserved-polaroid">
+                  <div class="reserved-polaroid-frame">?</div>
+                  <div class="reserved-date">??.??.2026</div>
+                  <div class="reserved-label">reserved for us</div>
+                </div>
+                <div class="reserved-polaroid">
+                  <div class="reserved-polaroid-frame">?</div>
+                  <div class="reserved-date">??.??.2026</div>
+                  <div class="reserved-label">reserved for us</div>
+                </div>
+                <div class="reserved-polaroid">
+                  <div class="reserved-polaroid-frame">?</div>
+                  <div class="reserved-date">??.??.2027</div>
+                  <div class="reserved-label">reserved for us</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. INTERACTIVE PHOTO BOOTH / SCRAPBOOK ("Bizden Kareler")
+         ========================================================================== -->
+    <section class="section" id="scrapbook">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Dijital Albüm</span>
+          <h2 class="section-title">Bizden Kareler</h2>
+          <p class="section-subtitle">Fotoğraflara tıklayarak arkasındaki gizli notları ve hatıraları çevir ↺</p>
+        </div>
+
+        <div class="scrapbook-desk">
+          <div class="scrapbook-cards-wrapper">
+
+            <!-- Card 1: 11.09.2026 -->
+            <div class="polaroid-3d-card" onclick="flipCard(this)">
+              <div class="polaroid-card-inner">
+                <!-- Front -->
+                <div class="card-face card-face-front">
+                  <div class="scrapbook-photo-box">
+                    <img src="assets/images/photo-1.jpg" alt="11 Eylül 2026 Fotoğrafımız" loading="lazy">
+                  </div>
+                  <div class="scrapbook-card-caption">
+                    <span class="scrapbook-caption-text">11.09.2026</span>
+                    <span class="flip-hint-badge">arkasını çevir ↺</span>
+                  </div>
+                </div>
+                <!-- Back -->
+                <div class="card-face card-face-back">
+                  <div class="tape-mark"></div>
+                  <div class="back-date">11 EYLÜL 2026</div>
+                  <div class="back-note">"our first photo.<br>çimlerde yan yana oturup zamanın nasıl geçtiğini unuttuğumuz gün."</div>
+                  <div class="back-stamp">Y × Ç • Chapter 02</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: 14.09.2026 (Day 1) -->
+            <div class="polaroid-3d-card" onclick="flipCard(this)">
+              <div class="polaroid-card-inner">
+                <!-- Front -->
+                <div class="card-face card-face-front" style="border: 2px solid rgba(246, 201, 216, 0.7);">
+                  <div class="scrapbook-photo-box">
+                    <img src="assets/images/photo-2.jpg" alt="14 Eylül 2026 Biz olduk fotoğrafı" loading="lazy">
+                  </div>
+                  <div class="scrapbook-card-caption">
+                    <span class="scrapbook-caption-text">14.09.2026 ♡</span>
+                    <span class="flip-hint-badge">arkasını çevir ↺</span>
+                  </div>
+                </div>
+                <!-- Back -->
+                <div class="card-face card-face-back">
+                  <div class="tape-mark"></div>
+                  <div class="back-date">14 EYLÜL 2026 — 18:20</div>
+                  <div class="back-note">"we became us.<br>hayatımın en güzel, en huzurlu 'evet'i. iyi ki yanımdasın."</div>
+                  <div class="back-stamp">Day 1 • Official Beginning</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: 21.09.2026 -->
+            <div class="polaroid-3d-card" onclick="flipCard(this)">
+              <div class="polaroid-card-inner">
+                <!-- Front -->
+                <div class="card-face card-face-front">
+                  <div class="scrapbook-photo-box">
+                    <img src="assets/images/photo-3.jpg" alt="21 Eylül 2026 El ele kafede" loading="lazy">
+                  </div>
+                  <div class="scrapbook-card-caption">
+                    <span class="scrapbook-caption-text">21.09.2026</span>
+                    <span class="flip-hint-badge">arkasını çevir ↺</span>
+                  </div>
+                </div>
+                <!-- Back -->
+                <div class="card-face card-face-back">
+                  <div class="tape-mark"></div>
+                  <div class="back-date">21 EYLÜL 2026</div>
+                  <div class="back-note">"memory no. 3.<br>deniz kenarı, sımsıkı kenetlenen eller ve gözlerinin içi gülen bir sen."</div>
+                  <div class="back-stamp">Y × Ç • Forever to go</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. "OUR LITTLE WORLD" (PERSONALITY COLLISION)
+         ========================================================================== -->
+    <section class="section" id="our-world">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Karakterlerimizin Çarpışması</span>
+          <h2 class="section-title">Our Little World</h2>
+          <p class="section-subtitle">"somehow this combination makes sense."</p>
+        </div>
+
+        <div class="world-collision-card">
+          <div class="world-split-grid">
+            
+            <!-- Çiğdem's Domain -->
+            <div class="world-side cigdem-world">
+              <h3 class="world-person-name">Çiğdem</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Zarafet, tatlı kaos, sonsuz şefkat ve zambaklar.
+              </p>
+              <div class="world-tags-list">
+                <span class="world-tag-pill">🌸 Hello Kitty enerjisi</span>
+                <span class="world-tag-pill">💙 Stitch uzay ruhu</span>
+                <span class="world-tag-pill">🤎 Capybara huzuru</span>
+                <span class="world-tag-pill">✨ Beyaz zambaklar</span>
+                <span class="world-tag-pill">🎀 Pembe kurdeleler</span>
+              </div>
+            </div>
+
+            <!-- Collision Sphere -->
+            <div class="world-collision-center">
+              <div class="collision-sphere">
+                ♡
+              </div>
+              <span class="collision-text">İki ayrı evren tek bir kalpte</span>
+            </div>
+
+            <!-- Yusuf's Domain -->
+            <div class="world-side yusuf-world">
+              <h3 class="world-person-name">Yusuf</h3>
+              <p style="font-size: 0.9rem; color: var(--text-muted);">
+                Örümcek hisleri, yarış çizgileri ve bitmeyen eğlence.
+              </p>
+              <div class="world-tags-list">
+                <span class="world-tag-pill">🕷️ Spider-Sense (Çiğdem radar)</span>
+                <span class="world-tag-pill">⚡ Lightning McQueen (#95)</span>
+                <span class="world-tag-pill">🏁 KACHOW! hızı</span>
+                <span class="world-tag-pill">🔴 Kırmızı & Gece Mavisi</span>
+                <span class="world-tag-pill">🎸 DKTT & Mor ve Ötesi</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. FUN RELATIONSHIP STATS
+         ========================================================================== -->
+    <section class="section" id="stats">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Eğlenceli Göstergeler</span>
+          <h2 class="section-title">Yusuf × Çiğdem Stats</h2>
+          <p class="section-subtitle">Sayılarla ölçülemeyecek bir hikâyenin en tatlı istatistikleri.</p>
+        </div>
+
+        <div class="stats-cards-grid">
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-pink">💌</div>
+            <span class="stat-metric-label">İlk Mesaj</span>
+            <span class="stat-metric-value">07.08.26</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-red">♡</div>
+            <span class="stat-metric-label">Resmen Biz</span>
+            <span class="stat-metric-value">14.09.26</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-blue">📸</div>
+            <span class="stat-metric-label">Kayıtlı Anılar</span>
+            <span class="stat-metric-value">3 / ∞</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-brown">🐾</div>
+            <span class="stat-metric-label">Capybara Onayı</span>
+            <span class="stat-metric-value">Sonsuz %</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-red">🕷️</div>
+            <span class="stat-metric-label">Spider-Sense</span>
+            <span class="stat-metric-value">Always On</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-gold">⚡</div>
+            <span class="stat-metric-label">McQueen Hızı</span>
+            <span class="stat-metric-value">KACHOW%</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-pink">🎀</div>
+            <span class="stat-metric-label">Hello Kitty Enerjisi</span>
+            <span class="stat-metric-value">100%</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-blue">🛸</div>
+            <span class="stat-metric-label">Stitch Kaos Oranı</span>
+            <span class="stat-metric-value">99%</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-pink">⚜️</div>
+            <span class="stat-metric-label">Zambaklar</span>
+            <span class="stat-metric-value">∞</span>
+          </div>
+
+          <div class="stat-item-card">
+            <div class="stat-icon-wrapper stat-gold">💫</div>
+            <span class="stat-metric-label">İlişki Durumu</span>
+            <span class="stat-metric-value" style="font-size: 1.15rem;">"still collecting memories..."</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         10. ACHIEVEMENT SYSTEM
+         ========================================================================== -->
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Oyun Başarımları</span>
+          <h2 class="section-title">Achievements</h2>
+          <p class="section-subtitle">Açılan başarımlar ve gelecekte açılmayı bekleyen gizli kilitler.</p>
+        </div>
+
+        <div class="achievements-wrapper">
+          <!-- Unlocked 1 -->
+          <div class="achievement-card unlocked">
+            <div class="achievement-badge">💬</div>
+            <div class="achievement-info">
+              <span class="achievement-status">UNLOCKED • 07.08.2026 18:25</span>
+              <h4 class="achievement-title">First Contact</h4>
+              <p class="achievement-desc">Bir konser daveti her şeyi başlattı.</p>
+            </div>
+          </div>
+
+          <!-- Unlocked 2 -->
+          <div class="achievement-card unlocked">
+            <div class="achievement-badge">📷</div>
+            <div class="achievement-info">
+              <span class="achievement-status">UNLOCKED • 11.09.2026</span>
+              <h4 class="achievement-title">Camera Roll Started</h4>
+              <p class="achievement-desc">İlk ortak fotoğraf kaydedildi.</p>
+            </div>
+          </div>
+
+          <!-- Unlocked 3 -->
+          <div class="achievement-card unlocked">
+            <div class="achievement-badge">💍</div>
+            <div class="achievement-info">
+              <span class="achievement-status">UNLOCKED • 14.09.2026 18:20</span>
+              <h4 class="achievement-title">Us</h4>
+              <p class="achievement-desc">Relationship status updated.</p>
+            </div>
+          </div>
+
+          <!-- Unlocked 4 -->
+          <div class="achievement-card unlocked">
+            <div class="achievement-badge">🌊</div>
+            <div class="achievement-info">
+              <span class="achievement-status">UNLOCKED • 21.09.2026</span>
+              <h4 class="achievement-title">Memory #3</h4>
+              <p class="achievement-desc">Deniz kenarında eller kenetlendi.</p>
+            </div>
+          </div>
+
+          <!-- Locked 1 -->
+          <div class="achievement-card locked">
+            <div class="achievement-badge">🔒</div>
+            <div class="achievement-info">
+              <span class="achievement-status">LOCKED</span>
+              <h4 class="achievement-title">???</h4>
+              <p class="achievement-desc">more memories required</p>
+            </div>
+          </div>
+
+          <!-- Locked 2 -->
+          <div class="achievement-card locked">
+            <div class="achievement-badge">🔒</div>
+            <div class="achievement-info">
+              <span class="achievement-status">LOCKED</span>
+              <h4 class="achievement-title">???</h4>
+              <p class="achievement-desc">more memories required</p>
+            </div>
+          </div>
+
+          <!-- Locked 3 -->
+          <div class="achievement-card locked">
+            <div class="achievement-badge">🔒</div>
+            <div class="achievement-info">
+              <span class="achievement-status">LOCKED</span>
+              <h4 class="achievement-title">???</h4>
+              <p class="achievement-desc">more memories required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         11. "OPEN WHEN..." LETTERS SECTION
+         ========================================================================== -->
+    <section class="section" id="letters">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Zamanı Geldiğinde</span>
+          <h2 class="section-title">Open When...</h2>
+          <p class="section-subtitle">İhtiyacın olan her an açıp okuyabilmen için saklanan mektuplar.</p>
+        </div>
+
+        <div class="letters-grid">
+          <!-- Letter 1 -->
+          <div class="letter-envelope-card" onclick="openLetter(1)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">mutlu olduğunda aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+
+          <!-- Letter 2 -->
+          <div class="letter-envelope-card" onclick="openLetter(2)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">üzgün olduğunda aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+
+          <!-- Letter 3 -->
+          <div class="letter-envelope-card" onclick="openLetter(3)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">beni özlediğinde aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+
+          <!-- Letter 4 -->
+          <div class="letter-envelope-card" onclick="openLetter(4)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">bana sinir olduğunda aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+
+          <!-- Letter 5 -->
+          <div class="letter-envelope-card" onclick="openLetter(5)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">uyuyamadığında aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+
+          <!-- Letter 6 -->
+          <div class="letter-envelope-card" onclick="openLetter(6)">
+            <div class="envelope-icon-box">✉️</div>
+            <h3 class="envelope-prompt">rastgele bir gün aç</h3>
+            <span class="envelope-action-hint">mektubu oku 🤍</span>
+          </div>
+        </div>
+
+        <!-- Secret "Don't Click" Button in Section -->
+        <div class="secret-trigger-wrapper">
+          <button type="button" class="secret-dont-click-btn" id="dont-click-btn">
+            buraya basma 🤫
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       12. INTERACTIVE CAPYBARA EASTER EGG (MINI-GAME)
+       ========================================================================== -->
+  <div id="capybara-chaser" title="Beni yakala!" aria-label="Capybara Kaçış Oyunu">
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+      <!-- Capybara Body -->
+      <ellipse cx="50" cy="58" rx="38" ry="26" fill="#A97C62"/>
+      <!-- Head -->
+      <path d="M 30 50 Q 20 28 42 22 Q 62 20 70 38 Q 72 50 60 55 Z" fill="#A97C62"/>
+      <!-- Snout -->
+      <ellipse cx="64" cy="38" rx="12" ry="10" fill="#8B6049"/>
+      <ellipse cx="68" cy="36" rx="2" ry="3" fill="#2A1B14"/>
+      <!-- Ear -->
+      <ellipse cx="32" cy="24" rx="5" ry="6" fill="#724D39"/>
+      <!-- Eye (Relaxed) -->
+      <path d="M 44 32 Q 48 30 52 32" stroke="#2A1B14" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Little Orange on Head -->
+      <circle cx="48" cy="14" r="7" fill="#FFA500"/>
+      <circle cx="48" cy="9" r="1.5" fill="#4CAF50"/>
+      <!-- Small Legs -->
+      <rect x="25" y="75" width="8" height="12" rx="4" fill="#8B6049"/>
+      <rect x="65" y="75" width="8" height="12" rx="4" fill="#8B6049"/>
+    </svg>
+    <div class="capybara-tooltip">tıkla bana! 🍊</div>
+  </div>
+
+  <!-- ==========================================================================
+       13. MODALS (LIGHTBOX, LETTER, SECRET DON'T CLICK)
+       ========================================================================== -->
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-hidden="true">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Kapat">&times;</button>
+      <img id="lightbox-img" src="" alt="Büyütülmüş Fotoğraf">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Letter Reader Modal -->
+  <div class="letter-modal" id="letter-modal" role="dialog" aria-hidden="true">
+    <div class="letter-paper-sheet">
+      <button class="letter-close-btn" onclick="closeLetter()" aria-label="Mektubu Kapat">&times;</button>
+      <div class="letter-heading-tag">ÖZEL MEKTUP</div>
+      <h3 class="letter-prompt-title" id="letter-modal-title">Başlık</h3>
+      <div class="letter-body-text" id="letter-modal-body">
+        <!-- Message inserted dynamically -->
+      </div>
+      <div class="letter-signature">
+        Sevgilerimle,<br>Yusuf ♡
+      </div>
+    </div>
+  </div>
+
+  <!-- Secret "Don't Click" Modal -->
+  <div class="secret-modal" id="secret-modal" role="dialog" aria-hidden="true">
+    <div class="secret-card">
+      <div class="secret-step-text">Sana basma demiştim...</div>
+      <div class="secret-step-text">ama madem buradasın, şunu bilmeni isterim:</div>
+      <div class="secret-step-text highlight">"İyi ki 7 Ağustos'ta sana mesaj atmışım."</div>
+      <div class="secret-step-text highlight">"İyi ki sen de cevap vermişsin."</div>
+      
+      <div class="secret-lily-heart-anim">
+        <svg width="36" height="36" viewBox="0 0 100 100" fill="#FDE8EF" stroke="#8D3046" stroke-width="4">
+          <path d="M50 85 C48 60 30 50 15 45 C30 40 45 35 50 10 C55 35 70 40 85 45 C70 50 52 60 50 85 Z"/>
+        </svg>
+        <span style="font-size: 1.8rem;">🤍</span>
+      </div>
+
+      <div style="font-family: var(--font-hand); font-size: 1.5rem; color: var(--burgundy); margin-bottom: 1rem;">
+        14.09.2026 ♡
+      </div>
+
+      <button type="button" class="secret-dismiss-btn" onclick="closeSecretModal()">
+        tamam tamam kapatıyorum
+      </button>
+    </div>
+  </div>
+
+  <!-- Achievement Catch Modal (Capybara) -->
+  <div class="secret-modal" id="capybara-achieve-modal" role="dialog" aria-hidden="true">
+    <div class="secret-card">
+      <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+      <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; color: #059669; text-transform: uppercase;">
+        ACHIEVEMENT UNLOCKED
+      </div>
+      <h3 style="font-family: var(--font-serif-display); font-size: 1.7rem; color: var(--burgundy); margin: 0.5rem 0;">
+        Çiğdem caught the capybara!
+      </h3>
+      <p style="font-size: 1.1rem; color: var(--text-main); margin: 1rem 0;">
+        <strong>Ödül:</strong> 1 adet sınırsız Yusuf Sarılması 🤍
+      </p>
+      <p style="font-style: italic; color: var(--text-muted); font-size: 0.9rem;">
+        (redeemable anytime, no expiration date.)
+      </p>
+      <button type="button" class="secret-dismiss-btn" onclick="closeCapybaraModal()">
+        Ödülü Kabul Et ♡
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Container for Spidey, McQueen & Music Messages -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       14. FINAL FOOTER SECTION
+       ========================================================================== -->
+  <footer class="romantic-footer">
+    <div class="container">
+      <h2 class="footer-continuation-title">To be continued...</h2>
+      <div class="footer-eternity-span">07.08.2026 → ∞</div>
+
+      <p class="footer-dedication">
+        made by Yusuf for Çiğdem.
+      </p>
+
+      <div class="footer-monogram-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--burgundy)">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span style="font-family: var(--font-serif-display); font-size: 1.1rem; color: var(--burgundy);">2026 ♡</span>
+      </div>
+
+      <div>
+        <span class="footer-debug-badge">relationship.exe • status: running</span>
+      </div>
+
+      <!-- Optional Final Secret Hint -->
+      <div>
+        <span class="footer-psst-secret" id="footer-psst" title="Bir fısıltı var...">psst...</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+</body>
+</html>
